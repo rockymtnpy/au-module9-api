@@ -10,12 +10,9 @@ import Foundation
 class BreweryViewModel: ObservableObject {
     
     @Published var breweries: [BreweryModel] = []
-    @Published var isLoading = false
-    @Published var hasError = false
 
     @MainActor
     func fetchBreweries(zip: String) async {
-        self.isLoading = true
         self.breweries.removeAll()
         
         let baseUrl = "https://api.openbrewerydb.org/v1/breweries"
@@ -35,13 +32,10 @@ class BreweryViewModel: ObservableObject {
             //print("Response: \(response)")
             
             self.breweries = response
-            self.isLoading = false
             
             
         } catch {
             print("caught error \(error)")
-            self.hasError = true
-            self.isLoading = false
         }
     }
     
