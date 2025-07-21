@@ -25,7 +25,8 @@ struct BreweryListView: View {
                 
                 } else {
                     ForEach(brew.breweries) { location in
-                        NavigationLink(destination: BreweryDetailView(brewery: location)) {                        BreweryTileView(brewery: location)
+                        NavigationLink(destination: BreweryDetailView(brewery: location)) {                        
+                            BreweryTileView(brewery: location)
                         }
                     }
                 }
